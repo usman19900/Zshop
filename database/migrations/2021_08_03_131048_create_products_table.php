@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('weight');
             $table->string('price');
-            $table->string('description');
+            $table->longText('description');
             $table->string('image');
             $table->foreignId('category_id')->constraned();
             $table->string('thumbnail');
