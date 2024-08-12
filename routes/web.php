@@ -22,22 +22,22 @@ Route::get('/faq',[\App\Http\Controllers\welcomeController::class,'faq'])->name(
 /*
 * Admin routes
 */
-Route::middleware(['auth','checksuperadmin'])->group(function () {
-    Route::prefix('admin')->group(function () {
-        Route::view('dashboard','admin.dashboard ')->name('admin.dashboard');
-        Route::get('manage-category',App\Http\Livewire\admin\Category::class)->name('admin.category');
-        Route::get('manage-products',App\Http\Livewire\Admin\Product::class)->name('admin.products');
-        Route::get('manage-orders',App\Http\Livewire\Admin\Orders::class)->name('admin.orders');
-        Route::get('manage-FAQ',App\Http\Livewire\Admin\faq::class)->name('admin.faq');
-        Route::get('manage-customers',App\Http\Livewire\Admin\users::class)->name('admin.users');
-        Route::get('manage-subscribers',App\Http\Livewire\Admin\Subscribers::class)->name('admin.subscribers');
-        Route::get('show-customer/{id}',[App\Http\Controllers\adminHelperController::class,'showSingleCustomer'])->name('admin.user_details');
-        Route::get('/admin/contactMessages',App\Http\Livewire\Admin\ContactedMessages::class)->name('admin.messages');
-        Route::get('manage-about-us-page',[App\Http\Controllers\adminHelperController::class,'manage_aboutUs_page'])->name('admin.aboutUs');
-        Route::post('manage-about-us-page',[App\Http\Controllers\adminHelperController::class,'store'])->name('admin.aboutUs');
-        Route::post("upload_cke_image",[App\Http\Controllers\adminHelperController::class,'uploadCKEImage'])->name('ckeditor.image-upload');
-    });
-});
+// Route::middleware(['auth','checksuperadmin'])->group(function () {
+//     Route::prefix('admin')->group(function () {
+//         Route::view('dashboard','admin.dashboard ')->name('admin.dashboard');
+//         Route::get('manage-category',App\Http\Livewire\admin\Category::class)->name('admin.category');
+//         Route::get('manage-products',App\Http\Livewire\Admin\Product::class)->name('admin.products');
+//         Route::get('manage-orders',App\Http\Livewire\Admin\Orders::class)->name('admin.orders');
+//         Route::get('manage-FAQ',App\Http\Livewire\Admin\faq::class)->name('admin.faq');
+//         Route::get('manage-customers',App\Http\Livewire\Admin\users::class)->name('admin.users');
+//         Route::get('manage-subscribers',App\Http\Livewire\Admin\Subscribers::class)->name('admin.subscribers');
+//         Route::get('show-customer/{id}',[App\Http\Controllers\adminHelperController::class,'showSingleCustomer'])->name('admin.user_details');
+//         Route::get('/admin/contactMessages',App\Http\Livewire\Admin\ContactedMessages::class)->name('admin.messages');
+//         Route::get('manage-about-us-page',[App\Http\Controllers\adminHelperController::class,'manage_aboutUs_page'])->name('admin.aboutUs');
+//         Route::post('manage-about-us-page',[App\Http\Controllers\adminHelperController::class,'store'])->name('admin.aboutUs');
+//         Route::post("upload_cke_image",[App\Http\Controllers\adminHelperController::class,'uploadCKEImage'])->name('ckeditor.image-upload');
+//     });
+// });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/add_to_cart/{id}',[\App\Http\Controllers\cartController::class,'store'])->name('add_product_to_cart');
